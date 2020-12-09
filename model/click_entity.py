@@ -1,5 +1,5 @@
-drop_table_script = "DROP TABLE IF EXISTS CLICK;"
-create_table_script = "CREATE TABLE CLICK (" \
+drop_click_table_script = "DROP TABLE IF EXISTS CLICK;"
+create_click_table_script = "CREATE TABLE CLICK (" \
                       "ID INT AUTO_INCREMENT PRIMARY KEY," \
                       "SALE INT," \
                       "SALES_AMOUNT FLOAT," \
@@ -23,10 +23,11 @@ create_table_script = "CREATE TABLE CLICK (" \
                       "PRODUCT_ID VARCHAR(32)," \
                       "PRODUCT_TITLE VARCHAR(512)," \
                       "PARTNER_ID VARCHAR(32)," \
-                      "USER_ID VARCHAR(32)" \
-                      ");"
-insert_entity_script = "INSERT INTO CLICK (" \
-                       "SALE, " \
+                      "USER_ID VARCHAR(32)," \
+                      "CLICK_DATE DATE" \
+                            ");"
+insert_click_entity_script = "INSERT INTO CLICK (" \
+                       "SALE," \
                        "SALES_AMOUNT," \
                        "TIME_DELAY_FOR_CONVERSION," \
                        "CLICK_TIMESTAMP," \
@@ -48,10 +49,7 @@ insert_entity_script = "INSERT INTO CLICK (" \
                        "PRODUCT_ID," \
                        "PRODUCT_TITLE," \
                        "PARTNER_ID," \
-                       "USER_ID)" \
-                       "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-
-
-def create_click_tuple_from_csv_record(line: str, separator='\t'):
-    values = line.split(separator)
-    return tuple(values)
+                       "USER_ID," \
+                       "CLICK_DATE" \
+                       ")" \
+                       "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
