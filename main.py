@@ -4,24 +4,37 @@ from statistics import stdev
 
 import mysql.connector as connector
 
+from algorithm.pseudorandom import PseudorandomAlgorithm
 from model.click_entity import Click
 from model.partner_entity import Partner
 from model.product_day_entity import ProductDay
 from model.product_day_mean_entity import ProductDayMean
+from model.working_data_entity import WorkingData
 
-filename = 'resource/ccs_top_100k.csv'
+filename = 'resource/CriteoSearchData'
 
 db = connector.connect(host='localhost', port='33069', password='q1w2e3r4', user='root', database='ccs')
 cursor = db.cursor()
 
 cost_factor = 0.12
-profit_factor = 0.1
+profit_factor = 0.22
+
+
+def db_setup():
+    cursor.execute(Click.drop_click_table_script)
+    cursor.execute(ProductDay.drop_product_day_table_script)
+    cursor.execute(Partner.drop_partner_table_script)
+    cursor.execute(WorkingData.drop_table_script)
+    cursor.execute(ProductDayMean.drop_product_day_table_script)
+
+    cursor.execute(Click.create_click_table_script)
+    cursor.execute(ProductDay.create_product_day_table_script)
+    cursor.execute(Partner.create_partner_table_script)
+    cursor.execute(WorkingData.create_table_script)
+    cursor.execute(ProductDayMean.create_product_day_table_script)
 
 
 def import_data_from_csv():
-    cursor.execute(Click.drop_click_table_script)
-    cursor.execute(Click.create_click_table_script)
-
     with open(filename, 'r') as file:
         reader = csv.reader(file, delimiter='\t')
         i = 0
@@ -35,38 +48,44 @@ def import_data_from_csv():
                 print('PROCESSED ' + str(i) + ' RECORDS')
                 db.commit()
             i += 1
+        print('PROCESSED TOTAL ' + str(i) + ' RECORDS')
+        file.close()
+
     db.commit()
 
 
-def calculate_product_day():
-    cursor.execute(ProductDay.drop_product_day_table_script)
-    cursor.execute(Partner.drop_partner_table_script)
+def create_working_table_for_partner(partner_id):
+    cursor.execute(Click.select_working_data_where_partner_id_script, {'partner_id': partner_id})
+    working_data_for_partner = cursor.fetchall()
 
-    cursor.execute(ProductDay.create_product_day_table_script)
-    cursor.execute(Partner.create_partner_table_script)
+    print('CREATING WORKING TABLE FOR PARTNER: ' + str(partner_id))
+    for entity in working_data_for_partner:
+        cursor.execute(WorkingData.insert_entity_script, entity)
+    db.commit()
 
-    cursor.execute(Click.select_distinct_partner_id_script)
-    partner_ids = cursor.fetchall()
-    partner_ids = [['C0F515F0A2D0A5D9F854008BA76EB537'], [], []]
+
+def calculate_product_day(partner_ids):
     for partner_tuple in partner_ids:
         partner_id = partner_tuple[0]
         print('PROCESSING PARTNER: ' + str(partner_id))
+        create_working_table_for_partner(partner_id)
 
-        cursor.execute(Click.select_distinct_product_id_where_partner_id_script, {'partner_id': partner_id})
+        cursor.execute(WorkingData.select_distinct_product_id)
         products_for_partner = cursor.fetchall()
 
+        print('PROCESSING DATA FOR PARTNER: ' + str(partner_id))
         total_sales_amount = 0
         total_clicks_number = 0
         for product_tuple in products_for_partner:
             product_id = product_tuple[0]
-            cursor.execute(Click.select_distinct_click_day_where_partner_id_and_product_id_script,
-                           {'partner_id': partner_id, 'product_id': product_id})
+            cursor.execute(WorkingData.select_distinct_click_day_where_product_id_script,
+                           {'product_id': product_id})
             days_for_product = cursor.fetchall()
 
             for day_tuple in days_for_product:
                 day = day_tuple[0]
-                cursor.execute(Click.select_all_where_partner_id_and_click_date_and_product_id_script,
-                               {'partner_id': partner_id, 'click_date': day, 'product_id': product_id})
+                cursor.execute(WorkingData.select_all_where_click_date_and_product_id_script,
+                               {'click_date': day, 'product_id': product_id})
                 clicks_for_product = cursor.fetchall()
 
                 daily_clicks_number = 0
@@ -74,7 +93,7 @@ def calculate_product_day():
                 daily_sales_amount = 0
                 for click in clicks_for_product:
                     daily_clicks_number += 1
-                    sales_amount = click[Click.SALES_AMOUNT]
+                    sales_amount = click[WorkingData.SALES_AMOUNT]
                     if sales_amount != -1:
                         daily_sales_number += 1
                         daily_sales_amount += sales_amount
@@ -90,14 +109,15 @@ def calculate_product_day():
         partner_entity = [partner_id, total_sales_amount, total_clicks_number, single_click_cost]
         cursor.execute(Partner.insert_partner_entity_script, tuple(partner_entity))
         db.commit()
+        cursor.execute(WorkingData.delete_all_script)
+        db.commit()
+        print('FINISHED PROCESSING PARTNER: ' + str(partner_id))
 
+    cursor.execute(WorkingData.delete_all_script)
     db.commit()
 
 
 def calculate_product_day_mean():
-    cursor.execute(ProductDayMean.drop_product_day_table_script)
-    cursor.execute(ProductDayMean.create_product_day_table_script)
-
     cursor.execute(ProductDay.select_distinct_partner_id_script)
     partner_ids = cursor.fetchall()
     for partner_tuple in partner_ids:
@@ -132,11 +152,22 @@ def calculate_product_day_mean():
                 cursor.execute(ProductDayMean.insert_product_day_entity_script, tuple(mean_entity))
 
         db.commit()
+        print('FINISHED CALCULATING MEAN FOR PARTNER: ' + str(partner_id))
 
     db.commit()
 
 
-if __name__ == '__main__':
-    # import_data_from_csv()
+def calculate_partner_data(partner_ids):
+    partner_ids = [['C0F515F0A2D0A5D9F854008BA76EB537'], ['04A66CE7327C6E21493DA6F3B9AACC75'],
+                   ['C306F0AD20C9B20C69271CC79B2E0887']]
     calculate_product_day()
     calculate_product_day_mean()
+
+
+def generate_excluded_products_result(algorithm, *params):
+
+    algorithm(products, *params)
+
+
+if __name__ == '__main__':
+    generate_excluded_products_result(PseudorandomAlgorithm.exclude_products)

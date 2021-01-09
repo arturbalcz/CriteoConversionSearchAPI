@@ -66,6 +66,7 @@ class Click:
                              ")" \
                              "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
     select_distinct_partner_id_script = "SELECT DISTINCT PARTNER_ID FROM CLICK;"
+    select_working_data_where_partner_id_script = "SELECT SALE, SALES_AMOUNT, PRODUCT_ID, PARTNER_ID, CLICK_DATE FROM CLICK WHERE PARTNER_ID = %(partner_id)s;"
     select_distinct_click_day_where_partner_id_script = "SELECT DISTINCT CLICK_DATE FROM CLICK WHERE PARTNER_ID = %(partner_id)s;"
     select_distinct_product_id_where_partner_id_script = "SELECT DISTINCT PRODUCT_ID FROM CLICK WHERE PARTNER_ID = %(partner_id)s;"
     select_distinct_product_id_where_partner_id_and_click_date_script = "SELECT DISTINCT PRODUCT_ID FROM CLICK WHERE PARTNER_ID = %(partner_id)s AND CLICK_DATE = %(click_date)s;"

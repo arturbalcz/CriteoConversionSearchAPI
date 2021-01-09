@@ -30,5 +30,6 @@ class ProductDay:
     select_distinct_partner_id_script = "SELECT DISTINCT PARTNER_ID FROM PRODUCT_DAY;"
     select_all_where_partner_id_script = "SELECT * FROM PRODUCT_DAY WHERE PARTNER_ID = %(partner_id)s;"
     select_distinct_product_id_where_partner_id_script = "SELECT DISTINCT PRODUCT_ID FROM PRODUCT_DAY WHERE PARTNER_ID = %(partner_id)s;"
+    select_distinct_day_date = "SELECT DISTINCT DAY_DATE FROM PRODUCT_DAY ORDER BY DAY_DATE;"
     select_all_where_partner_id_and_product_id_script = "SELECT * FROM PRODUCT_DAY WHERE PARTNER_ID = %(partner_id)s AND PRODUCT_ID = %(product_id)s ORDER BY DAY_DATE ASC;"
 
