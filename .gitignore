@@ -130,3 +130,7 @@ dmypy.json
 
 # PyCharm
 .idea/
+
+#Big Data
+/resource/ccs_top_100k.csv
+/resource/CriteoSearchData
