@@ -1,17 +1,22 @@
+import copy
 import csv
+import json
 from datetime import date
 from statistics import stdev
 
 import mysql.connector as connector
 
 from algorithm.pseudorandom import PseudorandomAlgorithm
+from algorithm.ucb import UcbAlgorithm
 from model.click_entity import Click
 from model.partner_entity import Partner
 from model.product_day_entity import ProductDay
 from model.product_day_mean_entity import ProductDayMean
+from model.product_statistics import ProductStatistics
 from model.working_data_entity import WorkingData
 
 filename = 'resource/CriteoSearchData'
+results_path = 'results/'
 
 db = connector.connect(host='localhost', port='33069', password='q1w2e3r4', user='root', database='ccs')
 cursor = db.cursor()
@@ -158,16 +163,81 @@ def calculate_product_day_mean():
 
 
 def calculate_partner_data(partner_ids):
-    partner_ids = [['C0F515F0A2D0A5D9F854008BA76EB537'], ['04A66CE7327C6E21493DA6F3B9AACC75'],
-                   ['C306F0AD20C9B20C69271CC79B2E0887']]
-    calculate_product_day()
+    calculate_product_day(partner_ids)
     calculate_product_day_mean()
 
 
-def generate_excluded_products_result(algorithm, *params):
+def calculate_daily_profit(products):
+    daily_profit = 0
+    for product in products:
+        product_profit = product[ProductStatistics.DAILY_PROFIT]
+        daily_profit += product_profit
 
-    algorithm(products, *params)
+    return daily_profit
+
+
+def generate_excluded_products_result(partner_ids, strategy, algorithm, *params):
+    cursor.execute(ProductDay.select_distinct_day_date)
+    days = cursor.fetchall()
+
+    for partner_tuple in partner_ids:
+        partner_id = partner_tuple[0]
+
+        results = []
+
+        products_seen_so_far = []
+        excluded_products = []
+        for day_tuple in days:
+            day = day_tuple[0]
+            day_record = {}
+            products_to_exclude = excluded_products
+            cursor.execute(ProductStatistics.select_products_statistics_where_partner_id_and_day_script,
+                           {'date': day, 'partner_id': partner_id})
+            products = cursor.fetchall()
+            excluded_products = algorithm(products, *params)
+            products_actually_excluded = list(set(products).intersection(products_to_exclude))
+
+            profit_before_exclusion = calculate_daily_profit(products)
+            excluded_products_profit = calculate_daily_profit(products_actually_excluded)
+            profit_after_exclusion = profit_before_exclusion + excluded_products_profit
+
+            products_in_day_ids = \
+                list(map(lambda p: p[ProductStatistics.PRODUCT_ID], products))
+            products_to_exclude_next_day_ids = \
+                list(map(lambda p: p[ProductStatistics.PRODUCT_ID], excluded_products))
+            products_to_exclude_ids = \
+                list(map(lambda p: p[ProductStatistics.PRODUCT_ID], products_to_exclude))
+            products_actually_excluded_ids = \
+                list(map(lambda p: p[ProductStatistics.PRODUCT_ID], products_actually_excluded))
+
+            day_record['day'] = str(day)
+            day_record['products_seen_so_far'] = copy.copy(products_seen_so_far)
+            day_record['products_in_day'] = products_in_day_ids
+            day_record['products_to_exclude'] = products_to_exclude_ids
+            day_record['products_to_exclude_next_day'] = products_to_exclude_next_day_ids
+            day_record['products_actually_excluded'] = products_actually_excluded_ids
+            day_record['profit_before_exclusion'] = profit_before_exclusion
+            day_record['profit_after_exclusion'] = profit_after_exclusion
+            day_record['excluded_products_profit'] = excluded_products_profit
+            results.append(day_record)
+
+            products_seen_so_far += products_in_day_ids
+
+        result = {'strategy': strategy, 'days': results}
+        out_file_name = str(partner_id) + '_' + strategy + '.json'
+        generate_results_file(out_file_name, result)
+
+
+def generate_results_file(out_file_name, result):
+    file_path = results_path + out_file_name
+    with open(file_path, "w") as outfile:
+        json.dump(result, outfile, indent=4)
 
 
 if __name__ == '__main__':
-    generate_excluded_products_result(PseudorandomAlgorithm.exclude_products)
+    # partners = [['C0F515F0A2D0A5D9F854008BA76EB537'], ['04A66CE7327C6E21493DA6F3B9AACC75'],
+    #             ['C306F0AD20C9B20C69271CC79B2E0887']]
+
+    partners = [['C0F515F0A2D0A5D9F854008BA76EB537']]
+    generate_excluded_products_result(partners, 'pseudorandom', PseudorandomAlgorithm.exclude_products)
+    generate_excluded_products_result(partners, 'ucb', UcbAlgorithm.exclude_products, 13)
