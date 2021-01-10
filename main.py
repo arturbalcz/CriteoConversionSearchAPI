@@ -1,7 +1,7 @@
 import copy
 import csv
+import datetime
 import json
-from datetime import date
 from statistics import stdev
 
 import mysql.connector as connector
@@ -25,13 +25,15 @@ cost_factor = 0.12
 profit_factor = 0.22
 
 
-def db_setup():
+def db_cleanup():
     cursor.execute(Click.drop_click_table_script)
     cursor.execute(ProductDay.drop_product_day_table_script)
     cursor.execute(Partner.drop_partner_table_script)
     cursor.execute(WorkingData.drop_table_script)
     cursor.execute(ProductDayMean.drop_product_day_table_script)
 
+
+def db_setup():
     cursor.execute(Click.create_click_table_script)
     cursor.execute(ProductDay.create_product_day_table_script)
     cursor.execute(Partner.create_partner_table_script)
@@ -47,7 +49,8 @@ def import_data_from_csv():
             entity = []
             for e in row:
                 entity.append(e)
-            entity.append(date.fromtimestamp(int(entity[3])).isoformat())
+            click_date = datetime.datetime.utcfromtimestamp(int(entity[3])).date().isoformat()
+            entity.append(click_date)
             cursor.execute(Click.insert_click_entity_script, tuple(entity))
             if i % 10000 == 0:
                 print('PROCESSED ' + str(i) + ' RECORDS')
@@ -122,9 +125,7 @@ def calculate_product_day(partner_ids):
     db.commit()
 
 
-def calculate_product_day_mean():
-    cursor.execute(ProductDay.select_distinct_partner_id_script)
-    partner_ids = cursor.fetchall()
+def calculate_product_day_mean(partner_ids):
     for partner_tuple in partner_ids:
         partner_id = partner_tuple[0]
         cursor.execute(Partner.select_all_where_partner_id_script, {'partner_id': partner_id})
@@ -164,7 +165,7 @@ def calculate_product_day_mean():
 
 def calculate_partner_data(partner_ids):
     calculate_product_day(partner_ids)
-    calculate_product_day_mean()
+    calculate_product_day_mean(partner_ids)
 
 
 def calculate_daily_profit(products):
@@ -177,16 +178,16 @@ def calculate_daily_profit(products):
 
 
 def generate_excluded_products_result(partner_ids, strategy, algorithm, *params):
-    cursor.execute(ProductDay.select_distinct_day_date)
-    days = cursor.fetchall()
-
     for partner_tuple in partner_ids:
         partner_id = partner_tuple[0]
 
-        results = []
+        cursor.execute(ProductDay.select_distinct_day_date_where_partner_id_script, {'partner_id': partner_id})
+        days = cursor.fetchall()
 
+        results = []
         products_seen_so_far = []
         excluded_products = []
+        total_excluded_products_profit = 0
         for day_tuple in days:
             day = day_tuple[0]
             day_record = {}
@@ -199,7 +200,8 @@ def generate_excluded_products_result(partner_ids, strategy, algorithm, *params)
 
             profit_before_exclusion = calculate_daily_profit(products)
             excluded_products_profit = calculate_daily_profit(products_actually_excluded)
-            profit_after_exclusion = profit_before_exclusion + excluded_products_profit
+            profit_after_exclusion = profit_before_exclusion - excluded_products_profit
+            total_excluded_products_profit -= excluded_products_profit
 
             products_in_day_ids = \
                 list(map(lambda p: p[ProductStatistics.PRODUCT_ID], products))
@@ -218,7 +220,8 @@ def generate_excluded_products_result(partner_ids, strategy, algorithm, *params)
             day_record['products_actually_excluded'] = products_actually_excluded_ids
             day_record['profit_before_exclusion'] = profit_before_exclusion
             day_record['profit_after_exclusion'] = profit_after_exclusion
-            day_record['excluded_products_profit'] = excluded_products_profit
+            day_record['excluded_products_profit'] = -excluded_products_profit
+            day_record['total_excluded_products_profit'] = total_excluded_products_profit
             results.append(day_record)
 
             products_seen_so_far += products_in_day_ids
@@ -235,9 +238,14 @@ def generate_results_file(out_file_name, result):
 
 
 if __name__ == '__main__':
-    # partners = [['C0F515F0A2D0A5D9F854008BA76EB537'], ['04A66CE7327C6E21493DA6F3B9AACC75'],
-    #             ['C306F0AD20C9B20C69271CC79B2E0887']]
+    partners = [['C0F515F0A2D0A5D9F854008BA76EB537'], ['04A66CE7327C6E21493DA6F3B9AACC75'],
+                ['C306F0AD20C9B20C69271CC79B2E0887']]
 
-    partners = [['C0F515F0A2D0A5D9F854008BA76EB537']]
+    # db_cleanup()
+    # db_setup()
+    # import_data_from_csv()
+    # calculate_partner_data(partners)
+
+    # partners = [['C0F515F0A2D0A5D9F854008BA76EB537']]
     generate_excluded_products_result(partners, 'pseudorandom', PseudorandomAlgorithm.exclude_products)
-    generate_excluded_products_result(partners, 'ucb', UcbAlgorithm.exclude_products, 13)
+    generate_excluded_products_result(partners, 'ucb_beta_13', UcbAlgorithm.exclude_products, 13)

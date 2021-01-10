@@ -6,7 +6,7 @@ class Partner:
     SINGLE_CLICK_COST = 4
 
     drop_partner_table_script = "DROP TABLE IF EXISTS PARTNER;"
-    create_partner_table_script = "CREATE TABLE PARTNER (" \
+    create_partner_table_script = "CREATE TABLE IF NOT EXISTS PARTNER (" \
                           "ID INT AUTO_INCREMENT PRIMARY KEY," \
                           "PARTNER_ID VARCHAR(32)," \
                           "TOTAL_SALES_AMOUNT FLOAT," \

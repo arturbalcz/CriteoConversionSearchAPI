@@ -11,7 +11,7 @@ class Click:
     CLICK_DATE = 24
 
     drop_click_table_script = "DROP TABLE IF EXISTS CLICK;"
-    create_click_table_script = "CREATE TABLE CLICK (" \
+    create_click_table_script = "CREATE TABLE IF NOT EXISTS CLICK (" \
                             "ID INT AUTO_INCREMENT PRIMARY KEY," \
                             "SALE INT," \
                             "SALES_AMOUNT FLOAT," \

@@ -7,7 +7,7 @@ class WorkingData:
     CLICK_DATE = 5
 
     drop_table_script = "DROP TABLE IF EXISTS WORKING_DATA;"
-    create_table_script = "CREATE TABLE WORKING_DATA (" \
+    create_table_script = "CREATE TABLE IF NOT EXISTS WORKING_DATA (" \
                             "ID INT AUTO_INCREMENT PRIMARY KEY," \
                             "SALE INT," \
                             "SALES_AMOUNT FLOAT," \

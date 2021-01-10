@@ -7,7 +7,7 @@ class ProductDayMean:
     STD_DEV = 5
 
     drop_product_day_table_script = "DROP TABLE IF EXISTS PRODUCT_DAY_MEAN;"
-    create_product_day_table_script = "CREATE TABLE PRODUCT_DAY_MEAN (" \
+    create_product_day_table_script = "CREATE TABLE IF NOT EXISTS PRODUCT_DAY_MEAN (" \
                       "ID INT AUTO_INCREMENT PRIMARY KEY," \
                       "PRODUCT_DAY_ID INT," \
                       "DAILY_PROFIT FLOAT," \
