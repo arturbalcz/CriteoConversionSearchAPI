@@ -224,7 +224,7 @@ def generate_excluded_products_result(partner_ids, strategy, algorithm, *params)
             day_record['total_excluded_products_profit'] = total_excluded_products_profit
             results.append(day_record)
 
-            products_seen_so_far += products_in_day_ids
+            products_seen_so_far = list(set(products_seen_so_far + products_in_day_ids))
 
         result = {'strategy': strategy, 'days': results}
         out_file_name = str(partner_id) + '_' + strategy + '.json'
