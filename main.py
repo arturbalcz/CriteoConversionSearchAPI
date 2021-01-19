@@ -18,7 +18,7 @@ from model.working_data_entity import WorkingData
 filename = 'resource/CriteoSearchData'
 results_path = 'results/'
 
-db = connector.connect(host='localhost', port='33069', password='q1w2e3r4', user='root', database='ccs')
+db = connector.connect(host='localhost', port='33070', password='q1w2e3r4', user='root', database='ccs')
 cursor = db.cursor()
 
 cost_factor = 0.12
@@ -227,6 +227,10 @@ def generate_excluded_products_result(partner_ids, strategy, algorithm, *params)
             products_actually_excluded_ids = \
                 get_entities_attribute(products_actually_excluded, ProductStatistics.PRODUCT_ID)
 
+            # products_actually_excluded_ids = list(map(lambda p: {"product_id": p[ProductStatistics.PRODUCT_ID],
+            #                                                      "profit": p[ProductStatistics.DAILY_PROFIT]},
+            #                                           products_actually_excluded))
+
             day_record['day'] = str(day)
             day_record['products_seen_so_far'] = copy.copy(products_seen_so_far_ids)
             day_record['products_in_day'] = products_in_day_ids
@@ -259,6 +263,6 @@ if __name__ == '__main__':
     # import_data_from_csv()
     # calculate_partner_data(partners)
 
-    # partners = [['C0F515F0A2D0A5D9F854008BA76EB537']]
+    # partners = [['04A66CE7327C6E21493DA6F3B9AACC75']]
     generate_excluded_products_result(partners, 'pseudorandom', PseudorandomAlgorithm.exclude_products)
     generate_excluded_products_result(partners, 'ucb_beta_13', UcbAlgorithm.exclude_products, 13)

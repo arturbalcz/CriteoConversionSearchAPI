@@ -776,17 +776,19 @@
                 "FC38AD5BA4E92DAB829782808B33C5E8"
             ],
             "products_actually_excluded": [
+                "014F17B51C77C0DC19CB9BB9206EBCB7",
                 "2CF5DE84915910C549B2576084A09870",
                 "6C6658A2C72EC82CC67871D93A1B9D52",
                 "6E6AC8106BF22558CDDA130EB9F3D8DD",
                 "8BF4BDC098576687A0759723BBAA464E",
                 "94CA8CA7BECD657D4F9AF204B40C875A",
+                "AD0107BADEE308615EB02357C5E2BE37",
                 "ADFED19CCCF9A13E7A7E5A6D90761A02"
             ],
-            "profit_before_exclusion": 42.76502520000042,
-            "profit_after_exclusion": 41.78691820000042,
-            "excluded_products_profit": -0.9781070000000001,
-            "total_excluded_products_profit": -0.9781070000000001
+            "profit_before_exclusion": 76.16251060000037,
+            "profit_after_exclusion": 75.64529660000038,
+            "excluded_products_profit": -0.5172140000000002,
+            "total_excluded_products_profit": -0.5172140000000002
         },
         {
             "day": "2020-10-02",
@@ -1287,15 +1289,17 @@
                 "0296EB7F4AD5F031AEE46572E96F82DB",
                 "37647F1AC631F62E1A76F75BB94A3349",
                 "69B6CB763C04DAD61A7DA8455215D436",
+                "8C0670317BCAB0DCE0FA7249B0BF55E7",
                 "A8E64B001ADB45A1C4F5AE5BFD62B630",
+                "AF220DEC9B2AA625FD644F2DF7460A76",
                 "C0D31D15AF7C842A6DC021A675856426",
                 "F474C58883B3CABFC2BE0416E727C03B",
                 "F9BDEA5537051CC70E56C6A8DCE09676"
             ],
-            "profit_before_exclusion": 17.995640399999985,
-            "profit_after_exclusion": 16.709380399999986,
-            "excluded_products_profit": -1.28626,
-            "total_excluded_products_profit": -2.264367
+            "profit_before_exclusion": 20.765078599999995,
+            "profit_after_exclusion": 19.755354199999996,
+            "excluded_products_profit": -1.0097244,
+            "total_excluded_products_profit": -1.5269384000000001
         },
         {
             "day": "2020-10-03",
@@ -1937,12 +1941,13 @@
                 "A8C1B04AE20DA730C1DF5A455D6CDCEF",
                 "B352D3F52D3DEF0213EBCF6BF7A40D49",
                 "E0D5B8F9DB1512E90E59BB6B4672ABF4",
+                "EC74A11DE3DC9202C1519CE4F6F19900",
                 "F5811166767FA1E8D2B2B9DE99255747"
             ],
-            "profit_before_exclusion": 27.58532519999997,
-            "profit_after_exclusion": 29.428896199999972,
-            "excluded_products_profit": 1.8435709999999998,
-            "total_excluded_products_profit": -0.42079600000000017
+            "profit_before_exclusion": 43.569475400000044,
+            "profit_after_exclusion": 45.505225000000046,
+            "excluded_products_profit": 1.9357495999999998,
+            "total_excluded_products_profit": 0.4088111999999997
         },
         {
             "day": "2020-10-05",
@@ -2721,6 +2726,7 @@
                 "01CA37FC82288D75BE9B288BC9C9304E",
                 "2CFC1459AC018386F71B09DD53B3551A",
                 "55965DD9C97067F79FA872884921FBA5",
+                "6E91E65038EDC03CFD9F0885AA4C4DA1",
                 "76DC136367E1A2F4BFD45F9541A09B86",
                 "B0C1A1FBC84EB3D711ACB9AFCC1B1AA2",
                 "B4E332C1D508B219BD938A8D3A6BE93A",
@@ -2729,10 +2735,10 @@
                 "CCE295B86FB1DACC3452E634EF1D1A3B",
                 "F347E4EB3320F54F1B4BF2A76C242433"
             ],
-            "profit_before_exclusion": 19.204995799999985,
-            "profit_after_exclusion": 17.234714599999986,
-            "excluded_products_profit": -1.9702812,
-            "total_excluded_products_profit": -2.3910772000000002
+            "profit_before_exclusion": 42.14148300000025,
+            "profit_after_exclusion": 40.26338040000025,
+            "excluded_products_profit": -1.8781026,
+            "total_excluded_products_profit": -1.4692914000000004
         },
         {
             "day": "2020-10-06",
@@ -3583,16 +3589,18 @@
                 "1D485C8A20EC649FADF45ACBA1B37775",
                 "24E45637CCF1E89FEDE72185561DBC3A",
                 "2CF5DE84915910C549B2576084A09870",
+                "46585630D4CABD032E718E902B650799",
                 "9027834D730C5E8424BCDC390461278D",
                 "AB742F5849F25BFF11F94D44799BAC59",
                 "ABCDB45F0486FE477FFD75E1CAC8BCF5",
                 "B9361FB6843CF803A7B3A2FE4009F9F0",
+                "C95E45D244A63EA52E81431E10B31257",
                 "F016E260FDEE55CDAB1E6F7DBF69B95C"
             ],
-            "profit_before_exclusion": 34.96718763000002,
-            "profit_after_exclusion": 36.62640303000002,
-            "excluded_products_profit": 1.6592154,
-            "total_excluded_products_profit": -0.7318618000000003
+            "profit_before_exclusion": 78.77211720000032,
+            "profit_after_exclusion": 80.61568980000033,
+            "excluded_products_profit": 1.8435726,
+            "total_excluded_products_profit": 0.37428119999999954
         },
         {
             "day": "2020-10-07",
@@ -4508,6 +4516,7 @@
                 "2075CA8082913F3D40CB3443FA1C099D",
                 "4090F9DDFEA2E449BDEAA792C042EA81",
                 "41A1FB1E81B8ED0677936225710E1D79",
+                "5069655D1D6F9CD8F46A7560813B9C09",
                 "64AA124E58565524A92002D606B5258D",
                 "8818C2C414235D758BEBA3E113D09A36",
                 "892C8D17610E370EFF1B7ADF3C37EC17",
@@ -4517,10 +4526,10 @@
                 "DF0D8A56C72EF4792709D34F784356BC",
                 "F1685A161195E88DD556FBA766F62B2E"
             ],
-            "profit_before_exclusion": 28.404742169999988,
-            "profit_after_exclusion": 29.787420769999986,
-            "excluded_products_profit": 1.3826786,
-            "total_excluded_products_profit": 0.6508167999999996
+            "profit_before_exclusion": 80.20868520000025,
+            "profit_after_exclusion": 81.68354240000025,
+            "excluded_products_profit": 1.4748572,
+            "total_excluded_products_profit": 1.8491383999999995
         },
         {
             "day": "2020-10-08",
@@ -5475,6 +5484,7 @@
                 "FC06C9CB39898ECB9A8E7C41A95360B5"
             ],
             "products_actually_excluded": [
+                "02BE4506F513E38989F442906AD27AC0",
                 "05B08DA21E584D7DD314AAE3CB9AC590",
                 "1896B916BF7CC4394EE3086DF0C9A748",
                 "1D863DD02D7D62112145C07B3DA8F6A2",
@@ -5485,16 +5495,18 @@
                 "7F22F711F5332EBE9AA559FE24C25554",
                 "7FF0B84E433AD5BB4274F081202CE47D",
                 "9AD9676C46070144C70857F0B428DB93",
+                "9C46A7AE83F14C1E38042AC37CD406B9",
                 "A1B19716B114B445D707FEB42C4E2D6A",
                 "A717E3AA5526FC364E07452D85A62EFD",
                 "ABABC9869343A465266A8E286BB75F6B",
                 "C963AE3D1510A29C5EE8A2C57B85AFBA",
+                "D4FD5F0569E9F797C7628F2D00E1786B",
                 "EAF487A1C17E244063B4F787F3A5AE1D"
             ],
-            "profit_before_exclusion": 20.912783848999986,
-            "profit_after_exclusion": 20.695813848999986,
-            "excluded_products_profit": -0.21696999999999989,
-            "total_excluded_products_profit": 0.43384679999999975
+            "profit_before_exclusion": 68.55843200000022,
+            "profit_after_exclusion": 68.61799780000023,
+            "excluded_products_profit": 0.05956579999999989,
+            "total_excluded_products_profit": 1.9087041999999994
         },
         {
             "day": "2020-10-09",
@@ -6473,10 +6485,10 @@
                 "DE72C0000F4873EA5886B962B51FB304",
                 "EC7328021315CE2068865ACE43A99B1E"
             ],
-            "profit_before_exclusion": 11.18850460699999,
-            "profit_after_exclusion": 12.06113400699999,
-            "excluded_products_profit": 0.8726294000000002,
-            "total_excluded_products_profit": 1.3064762
+            "profit_before_exclusion": 55.31315260000014,
+            "profit_after_exclusion": 56.18578200000014,
+            "excluded_products_profit": 0.8726294,
+            "total_excluded_products_profit": 2.7813335999999995
         },
         {
             "day": "2020-10-10",
@@ -7499,10 +7511,10 @@
                 "F1685A161195E88DD556FBA766F62B2E",
                 "FAF777E2896FACF2D4C78A64A3627805"
             ],
-            "profit_before_exclusion": 26.378440341,
-            "profit_after_exclusion": 21.60688234100001,
+            "profit_before_exclusion": 42.6767104000002,
+            "profit_after_exclusion": 37.90515240000021,
             "excluded_products_profit": -4.7715579999999935,
-            "total_excluded_products_profit": -3.4650817999999934
+            "total_excluded_products_profit": -1.990224399999994
         },
         {
             "day": "2020-10-11",
@@ -8591,10 +8603,10 @@
                 "F95C1E1AEF6C0212DA4E87A88367A98A",
                 "FA1562524182C117F8FBBF13214C9AF6"
             ],
-            "profit_before_exclusion": 24.86420139999997,
-            "profit_after_exclusion": 24.42735419999997,
-            "excluded_products_profit": -0.4368471999999999,
-            "total_excluded_products_profit": -3.9019289999999933
+            "profit_before_exclusion": 69.88589300000031,
+            "profit_after_exclusion": 69.4490458000003,
+            "excluded_products_profit": -0.4368472000000002,
+            "total_excluded_products_profit": -2.4270715999999943
         },
         {
             "day": "2020-10-12",
@@ -9753,10 +9765,10 @@
                 "F300B1BA1C06CE3CBB82104CC9C29AA7",
                 "F4FBE491D9C9B58D0C488D73F871B1CA"
             ],
-            "profit_before_exclusion": 34.64805063999999,
-            "profit_after_exclusion": 15.67457963999999,
-            "excluded_products_profit": -18.973470999999996,
-            "total_excluded_products_profit": -22.87539999999999
+            "profit_before_exclusion": 43.74953720000001,
+            "profit_after_exclusion": 24.776066200000013,
+            "excluded_products_profit": -18.973471,
+            "total_excluded_products_profit": -21.400542599999994
         },
         {
             "day": "2020-10-13",
@@ -10958,6 +10970,7 @@
             ],
             "products_actually_excluded": [
                 "0296EB7F4AD5F031AEE46572E96F82DB",
+                "05016F022A52BF266E974507A18E97BE",
                 "137954704655645C10F3D7297C0DB92E",
                 "334D769BAB14D1C364A04503AE748872",
                 "39C6AC312940416972AD72C5BF0DC74C",
@@ -10970,6 +10983,7 @@
                 "891EE660A73D9A6E1F4BD6149E613C44",
                 "A33C9C87AE15445CD94A92AB933DC5D4",
                 "A95AAFB9C29244647F4248AC4AA8DA04",
+                "AFB1A5DBE1E0DFB0B6EBB2F10089C255",
                 "B3C20DAD3131C5F5204574A6C1C28501",
                 "BF172759E99E93B1862322C9535705C0",
                 "C4EC88D53B07E3B91E7895407F4BBB71",
@@ -10980,10 +10994,10 @@
                 "EA99F858AD6D26B40BEAE06C298191DA",
                 "EC0968DC07FA89912884A5CC85FB2C35"
             ],
-            "profit_before_exclusion": 47.054627707600034,
-            "profit_after_exclusion": 35.28620250760004,
-            "excluded_products_profit": -11.768425199999996,
-            "total_excluded_products_profit": -34.64382519999998
+            "profit_before_exclusion": 65.01097800000038,
+            "profit_after_exclusion": 53.42691000000038,
+            "excluded_products_profit": -11.584067999999993,
+            "total_excluded_products_profit": -32.98461059999999
         },
         {
             "day": "2020-10-14",
@@ -12197,16 +12211,17 @@
                 "C328B331E52E9E2AA6B548CDFF6480BC",
                 "C7CEDCC37FA1D77FE10F2D2CAD60958E",
                 "CE2E0EA0037CE6F2730EEEDE53F2C42E",
+                "D3B177BAB7EC37FA13A2F9812E69BBEB",
                 "D58F755A83C818CB48A998943D4A315B",
                 "D7DB766030D20DF57B14E2265278EE8A",
                 "DBE8FE5F1ABD8BD42FF6A49917D31AA0",
                 "DDFB59D07084C1AC0FC10001FBEE5D81",
                 "DEA264F25D42443544D3F50C3EA01319"
             ],
-            "profit_before_exclusion": 7.12007695999999,
-            "profit_after_exclusion": -7.080231040000003,
-            "excluded_products_profit": -14.200307999999993,
-            "total_excluded_products_profit": -48.84413319999997
+            "profit_before_exclusion": 26.789523999999982,
+            "profit_after_exclusion": 12.681394599999996,
+            "excluded_products_profit": -14.108129399999987,
+            "total_excluded_products_profit": -47.09273999999998
         },
         {
             "day": "2020-10-15",
@@ -13457,10 +13472,10 @@
                 "D9D555C12A9ED392DE66CA46B4C67E0C",
                 "FDB2F2991EC6EBF524FA254F565986F4"
             ],
-            "profit_before_exclusion": 11.543704359999989,
-            "profit_after_exclusion": 4.953433759999998,
+            "profit_before_exclusion": 46.711963400000165,
+            "profit_after_exclusion": 40.121692800000176,
             "excluded_products_profit": -6.590270599999991,
-            "total_excluded_products_profit": -55.43440379999996
+            "total_excluded_products_profit": -53.68301059999997
         },
         {
             "day": "2020-10-16",
@@ -14732,6 +14747,7 @@
                 "A45D4513343F1D3431E9BE4CB7940358",
                 "ABCDB45F0486FE477FFD75E1CAC8BCF5",
                 "B4E332C1D508B219BD938A8D3A6BE93A",
+                "BEBF9904C545EF84EBFE530EB56CAB88",
                 "C3EA38B83226370531545E8E00AE9D84",
                 "C754FDBEAF277933BB38BD3E0079EA60",
                 "C83B95251B7ADB636931952A02F7EC61",
@@ -14741,10 +14757,10 @@
                 "F8813F60A5615A21FFAC66FAFE0FFAEA",
                 "FD998E3DB4503426A2CAF502ABC3B45B"
             ],
-            "profit_before_exclusion": 30.45409710089999,
-            "profit_after_exclusion": 16.4507687009,
-            "excluded_products_profit": -14.00332839999999,
-            "total_excluded_products_profit": -69.43773219999996
+            "profit_before_exclusion": 48.72722700000008,
+            "profit_after_exclusion": 34.81607720000008,
+            "excluded_products_profit": -13.911149799999993,
+            "total_excluded_products_profit": -67.59416039999996
         },
         {
             "day": "2020-10-17",
@@ -16025,6 +16041,7 @@
                 "7682B2E41A00A2CC2272FE9547AE2731",
                 "7D2FE0F9AC799CA44BC63EED5CC0FFB0",
                 "887A700C1958E6E75C8AF10D7CC7498E",
+                "8CD8F5E6E580C755F237FC365D7FC5E8",
                 "90D5FD0DF8D5444F7FF7F022E0B083D4",
                 "92EF302B37D1C7ABC387B3D86A8BF3D7",
                 "9B5B63B2227604144DC267826D8F7E2E",
@@ -16042,10 +16059,10 @@
                 "F8FD9090F2A8D98F83D28AAE871F5997",
                 "FDA17E1270772CF7D354DFDFDC701DD8"
             ],
-            "profit_before_exclusion": 13.017771279999996,
-            "profit_after_exclusion": 2.7822338800000015,
-            "excluded_products_profit": -10.235537399999995,
-            "total_excluded_products_profit": -79.67326959999995
+            "profit_before_exclusion": 98.38899460000034,
+            "profit_after_exclusion": 88.24563580000034,
+            "excluded_products_profit": -10.143358799999998,
+            "total_excluded_products_profit": -77.73751919999997
         },
         {
             "day": "2020-10-18",
@@ -17383,10 +17400,10 @@
                 "EC8C426BD6FB87B235CC19C0D36A076E",
                 "F8FD9090F2A8D98F83D28AAE871F5997"
             ],
-            "profit_before_exclusion": 24.75742812999999,
-            "profit_after_exclusion": 25.54181932999999,
+            "profit_before_exclusion": 89.87050580000037,
+            "profit_after_exclusion": 90.65489700000037,
             "excluded_products_profit": 0.7843911999999996,
-            "total_excluded_products_profit": -78.88887839999995
+            "total_excluded_products_profit": -76.95312799999996
         },
         {
             "day": "2020-10-19",
@@ -18719,6 +18736,7 @@
                 "3C31EC078B89C8E75088CBE8C4A35476",
                 "4FD8F417A8512DC1BE5A2156FF18D1C9",
                 "50B276E10E6B64D6EAB0CA1A09044C25",
+                "644C14C5B7115E40549E8777C96245D3",
                 "65EFF6211D52869F474A68B1AC7EF7E6",
                 "6D86C83A46DE6356328301C6CF6A4A61",
                 "70D8B12D848621510E2F1220B7924582",
@@ -18742,10 +18760,10 @@
                 "EFBB5F46CBA2A6D1088ADB47253BF500",
                 "FE9D426722C1C9408173FECB1BB83F58"
             ],
-            "profit_before_exclusion": 17.791005469999973,
-            "profit_after_exclusion": 1.2416764699999767,
-            "excluded_products_profit": -16.549328999999997,
-            "total_excluded_products_profit": -95.43820739999995
+            "profit_before_exclusion": 79.56492420000053,
+            "profit_after_exclusion": 63.10777380000054,
+            "excluded_products_profit": -16.457150399999996,
+            "total_excluded_products_profit": -93.41027839999995
         },
         {
             "day": "2020-10-20",
@@ -20094,6 +20112,7 @@
                 "03A2701FC750F3A6D8C88A6E42B27E4B",
                 "0F994404F337477EEEE93CB98A71E32A",
                 "10420AB2C9ACDCC73FB92B4CD811E89A",
+                "26B678F4D0044EFDA3A7021C1044C11A",
                 "273DF0823EB2BADE510CD12FBC659DB3",
                 "394E21231C49F5E164D119A9CB0558F6",
                 "3BA62731D7B7502736CEDE27085FD458",
@@ -20129,10 +20148,10 @@
                 "FB1351E52E814A954C815DF3D086C5BC",
                 "FB7F0B017D22DC5114921F9148F5098A"
             ],
-            "profit_before_exclusion": 19.48306034999997,
-            "profit_after_exclusion": 10.351897149999981,
-            "excluded_products_profit": -9.131163199999989,
-            "total_excluded_products_profit": -104.56937059999994
+            "profit_before_exclusion": 129.6167162000002,
+            "profit_after_exclusion": 120.57773160000022,
+            "excluded_products_profit": -9.038984599999996,
+            "total_excluded_products_profit": -102.44926299999995
         },
         {
             "day": "2020-10-21",
@@ -21458,10 +21477,10 @@
                 "F8813F60A5615A21FFAC66FAFE0FFAEA",
                 "F96AF46DEF0C03E288428EC1FEB0248F"
             ],
-            "profit_before_exclusion": 6.000125263999988,
-            "profit_after_exclusion": 6.965330463999987,
-            "excluded_products_profit": 0.9652051999999992,
-            "total_excluded_products_profit": -103.60416539999994
+            "profit_before_exclusion": 85.98356820000018,
+            "profit_after_exclusion": 86.94877340000018,
+            "excluded_products_profit": 0.9652051999999994,
+            "total_excluded_products_profit": -101.48405779999995
         },
         {
             "day": "2020-10-22",
@@ -22829,6 +22848,7 @@
                 "3D00C316955E92D450355929FD9F349F",
                 "4A9A2609F975372EDEAB509D47CBBEA8",
                 "4D2B61F8C59B031EA90996C8E9B8EFC0",
+                "60536A070BFFBDC9F9790E68224F0E66",
                 "60EE49C255676CB3C240E44E2FBD09E4",
                 "63E4A182BADDB6575BECD594429832F8",
                 "688B27A3A8B69F001A10AA6E9307632C",
@@ -22856,10 +22876,10 @@
                 "F0C94913B75DA47FF162D91D7DFC679C",
                 "F40F571A33885A23EE965E66CD76F2C9"
             ],
-            "profit_before_exclusion": 8.401145109999998,
-            "profit_after_exclusion": -13.480965889999993,
-            "excluded_products_profit": -21.88211099999999,
-            "total_excluded_products_profit": -125.48627639999994
+            "profit_before_exclusion": 37.7047842000003,
+            "profit_after_exclusion": 15.9148518000003,
+            "excluded_products_profit": -21.789932399999998,
+            "total_excluded_products_profit": -123.27399019999994
         },
         {
             "day": "2020-10-23",
@@ -24254,10 +24274,10 @@
                 "F05B885BC6FF7A830127B61FE35C2CAE",
                 "FE7034B458E38B21F9881EF7FF56A9A2"
             ],
-            "profit_before_exclusion": 18.451325975999982,
-            "profit_after_exclusion": 18.38403977599998,
+            "profit_before_exclusion": 42.12692540000013,
+            "profit_after_exclusion": 42.059639200000134,
             "excluded_products_profit": -0.0672862000000004,
-            "total_excluded_products_profit": -125.55356259999994
+            "total_excluded_products_profit": -123.34127639999994
         },
         {
             "day": "2020-10-24",
@@ -25669,10 +25689,10 @@
                 "F26B714C221E22C2EC936F2B2D5B7AC9",
                 "F9BDEA5537051CC70E56C6A8DCE09676"
             ],
-            "profit_before_exclusion": 17.80696356999999,
-            "profit_after_exclusion": 13.362101769999994,
-            "excluded_products_profit": -4.444861799999996,
-            "total_excluded_products_profit": -129.99842439999992
+            "profit_before_exclusion": 127.23589760000014,
+            "profit_after_exclusion": 122.79103580000016,
+            "excluded_products_profit": -4.4448617999999875,
+            "total_excluded_products_profit": -127.78613819999993
         },
         {
             "day": "2020-10-25",
@@ -27156,10 +27176,10 @@
                 "F347E4EB3320F54F1B4BF2A76C242433",
                 "F6DD3D2F3297AE3F345AB267B2B2B3E0"
             ],
-            "profit_before_exclusion": 15.623146381999996,
-            "profit_after_exclusion": 9.590667781999999,
-            "excluded_products_profit": -6.0324785999999975,
-            "total_excluded_products_profit": -136.0309029999999
+            "profit_before_exclusion": 70.90566880000044,
+            "profit_after_exclusion": 64.87319020000045,
+            "excluded_products_profit": -6.032478599999985,
+            "total_excluded_products_profit": -133.81861679999992
         },
         {
             "day": "2020-10-26",
@@ -28654,6 +28674,7 @@
                 "6A94226CBD7778AB7D0653971EC10303",
                 "6FFFA2A3ADC1FB3F2E5D70E5E8886EEA",
                 "88F4517F67ECE52D0FC509268CECEA9A",
+                "8D8C4E64B56D3D0FEF0F6FBB0CA91B70",
                 "A213F8804CEC04D6496134A8C63A6CA2",
                 "AD1234E7C451B167AB97AFBBE2B223F8",
                 "AD87B853F199F2DEBC661CBA949D5F53",
@@ -28680,10 +28701,10 @@
                 "FE31DD5AD3E857EBD4BA2C4FDF732ED4",
                 "FFDA51F67822C0899CF4428BDD158FEA"
             ],
-            "profit_before_exclusion": 3.750633407999993,
-            "profit_after_exclusion": -15.989964391999992,
-            "excluded_products_profit": -19.740597799999986,
-            "total_excluded_products_profit": -155.7715007999999
+            "profit_before_exclusion": 90.50749860000032,
+            "profit_after_exclusion": 70.85907940000033,
+            "excluded_products_profit": -19.64841919999999,
+            "total_excluded_products_profit": -153.4670359999999
         },
         {
             "day": "2020-10-27",
@@ -30204,11 +30225,13 @@
                 "642D5E508D4355B3ECC58E21E05B9A8A",
                 "68897A29C28B801A774A96135B3183EB",
                 "6D91DF7EA2FD55F2E98307EB66BD2407",
+                "7333636123944A2B6FF274A0BBD7FAE7",
                 "8509CFDE53B399C0A1BC712E3FD9EE47",
                 "891EE660A73D9A6E1F4BD6149E613C44",
                 "9C46A7AE83F14C1E38042AC37CD406B9",
                 "9E0E56FB3B57DD3150396BAE0ABB7916",
                 "A9FA22B0C426DE6FFE70E5E88F6EB31B",
+                "AAD99B12AA2B035AE1C59D91C5F7C4CD",
                 "AEC64DE6DD75872C367D1429BAF8C8EF",
                 "B4E28E5E264F90D409CBA7F3EA3B383F",
                 "B936269499EBAB3C9698E132686AC200",
@@ -30220,6 +30243,7 @@
                 "CCE4BED60A6D6E64F1E67DFDDA8CAB98",
                 "CF59F8FD2FFA946F4BE0875C590F2533",
                 "D8DE570CC154CCBE4FFF9C534197D966",
+                "DA6B2AA597FC572B59592BC2C7F167D0",
                 "E2930B02AA62414DBCE30ADAF80F1BE8",
                 "E8D2A20EB00B25E26117F9C2F58C5996",
                 "EC7328021315CE2068865ACE43A99B1E",
@@ -30227,10 +30251,10 @@
                 "FAD941A3A540C23C5AFCADD6EC4540FF",
                 "FC06C9CB39898ECB9A8E7C41A95360B5"
             ],
-            "profit_before_exclusion": 3.947103130000001,
-            "profit_after_exclusion": -10.427876069999995,
-            "excluded_products_profit": -14.374979199999995,
-            "total_excluded_products_profit": -170.14647999999988
+            "profit_before_exclusion": 40.40888440000045,
+            "profit_after_exclusion": 26.310441000000466,
+            "excluded_products_profit": -14.098443399999988,
+            "total_excluded_products_profit": -167.56547939999987
         },
         {
             "day": "2020-10-28",
@@ -31784,10 +31808,10 @@
                 "F6F0D11BE155EBF43AC7DA04B35AA0C1",
                 "F96AF46DEF0C03E288428EC1FEB0248F"
             ],
-            "profit_before_exclusion": 13.301522521999999,
-            "profit_after_exclusion": 17.869752122,
-            "excluded_products_profit": 4.568229600000002,
-            "total_excluded_products_profit": -165.5782503999999
+            "profit_before_exclusion": 43.824325800000196,
+            "profit_after_exclusion": 48.3925554000002,
+            "excluded_products_profit": 4.568229600000004,
+            "total_excluded_products_profit": -162.99724979999988
         },
         {
             "day": "2020-10-29",
@@ -33384,10 +33408,10 @@
                 "FC06C9CB39898ECB9A8E7C41A95360B5",
                 "FFB3BAC14E7BB419B566FCA6BFD0A758"
             ],
-            "profit_before_exclusion": 1.54461279,
-            "profit_after_exclusion": 7.628398990000003,
+            "profit_before_exclusion": 8.913348599999926,
+            "profit_after_exclusion": 14.997134799999928,
             "excluded_products_profit": 6.083786200000002,
-            "total_excluded_products_profit": -159.4944641999999
+            "total_excluded_products_profit": -156.9134635999999
         },
         {
             "day": "2020-10-30",
@@ -34932,6 +34956,7 @@
                 "C0871C3283450DFD357166E797FB6C6A",
                 "C7A733202B3AF197DDE516257161DC2E",
                 "D14ED33BD8DA19DA89F769983B89B1D0",
+                "DD0B253C6B8E1FD541DA78D90D512C2D",
                 "DEA264F25D42443544D3F50C3EA01319",
                 "E07B85DC455F24D241350A773ADCFEC9",
                 "E3AF6A6DC4D6E34B84D7436F0D272E98",
@@ -34941,10 +34966,10 @@
                 "FC469EF75ECB423672898F0476409A8D",
                 "FC8D0441967CBC1F0B9FD9BEAA33B162"
             ],
-            "profit_before_exclusion": 3.3275859199999998,
-            "profit_after_exclusion": 5.1101879199999996,
-            "excluded_products_profit": 1.7826019999999998,
-            "total_excluded_products_profit": -157.7118621999999
+            "profit_before_exclusion": 106.42442300000016,
+            "profit_after_exclusion": 108.29920360000015,
+            "excluded_products_profit": 1.8747805999999998,
+            "total_excluded_products_profit": -155.03868299999988
         },
         {
             "day": "2020-10-31",
@@ -36471,10 +36496,10 @@
                 "FB292071224C5B1D664C9CE4F035FB8B",
                 "FFDA51F67822C0899CF4428BDD158FEA"
             ],
-            "profit_before_exclusion": 3.0671221750000006,
-            "profit_after_exclusion": 4.179530775000001,
-            "excluded_products_profit": 1.1124086,
-            "total_excluded_products_profit": -156.5994535999999
+            "profit_before_exclusion": 6.142596799999965,
+            "profit_after_exclusion": 7.255005399999964,
+            "excluded_products_profit": 1.1124085999999993,
+            "total_excluded_products_profit": -153.92627439999987
         },
         {
             "day": "2020-11-01",
@@ -38062,10 +38087,10 @@
                 "FAE515B75E9BCA83E2F066F2364311D8",
                 "FF03577E5EC98B7249623F8050A61601"
             ],
-            "profit_before_exclusion": -0.7358263089999996,
-            "profit_after_exclusion": -8.073691308999988,
-            "excluded_products_profit": -7.337864999999988,
-            "total_excluded_products_profit": -163.93731859999988
+            "profit_before_exclusion": -3.052003000000022,
+            "profit_after_exclusion": -10.389868000000012,
+            "excluded_products_profit": -7.33786499999999,
+            "total_excluded_products_profit": -161.26413939999986
         },
         {
             "day": "2020-11-02",
@@ -39574,10 +39599,10 @@
                 "F9FD1CCBB45071CCD4E09E22D814404E",
                 "FED84E94C62779E6944303D461363A55"
             ],
-            "profit_before_exclusion": -1.3902820109999987,
-            "profit_after_exclusion": -21.494004610999998,
-            "excluded_products_profit": -20.103722599999998,
-            "total_excluded_products_profit": -184.04104119999988
+            "profit_before_exclusion": -1.1055298000000455,
+            "profit_after_exclusion": -21.20925240000004,
+            "excluded_products_profit": -20.103722599999994,
+            "total_excluded_products_profit": -181.36786199999986
         }
     ]
 }

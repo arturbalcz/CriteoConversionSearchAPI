@@ -10,7 +10,7 @@ services:
       MYSQL_DATABASE: ccs
       MYSQL_ROOT_PASSWORD: q1w2e3r4
     ports:
-      - 33069:3306
+      - 33070:3306
     volumes:
       - ccs-db:/var/lib/mysql
 
