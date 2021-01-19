@@ -1,6 +1,6 @@
 import random
 
-seed = 12,
+seed = 12
 excluded_products_ratio = 20
 
 

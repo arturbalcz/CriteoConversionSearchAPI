@@ -177,6 +177,15 @@ def calculate_daily_profit(products):
     return daily_profit
 
 
+def get_entities_attribute(entities_list, attribute_index):
+    return sorted(list(map(lambda p: p[attribute_index], entities_list)))
+
+
+def compare_product_statistics(entity1, entity2):
+    ids = get_entities_attribute([entity1, entity2], ProductStatistics.PRODUCT_ID)
+    return ids[0] < ids[1]
+
+
 def generate_excluded_products_result(partner_ids, strategy, algorithm, *params):
     for partner_tuple in partner_ids:
         partner_id = partner_tuple[0]
@@ -185,35 +194,41 @@ def generate_excluded_products_result(partner_ids, strategy, algorithm, *params)
         days = cursor.fetchall()
 
         results = []
-        products_seen_so_far = []
         excluded_products = []
         total_excluded_products_profit = 0
+        products_seen_so_far = []
         for day_tuple in days:
             day = day_tuple[0]
             day_record = {}
             products_to_exclude = excluded_products
             cursor.execute(ProductStatistics.select_products_statistics_where_partner_id_and_day_script,
                            {'date': day, 'partner_id': partner_id})
-            products = cursor.fetchall()
-            excluded_products = algorithm(products, *params)
-            products_actually_excluded = list(set(products).intersection(products_to_exclude))
+            products_in_day = cursor.fetchall()
+            products_seen_so_far_ids = get_entities_attribute(products_seen_so_far, ProductStatistics.PRODUCT_ID)
 
-            profit_before_exclusion = calculate_daily_profit(products)
+            cursor.execute(ProductStatistics.select_products_seen_so_far_where_partner_id_and_day_script,
+                           {'date': day, 'partner_id': partner_id})
+            products_seen_so_far = cursor.fetchall()
+
+            if len(products_seen_so_far_ids) != len(set(products_seen_so_far_ids)):
+                print(False)
+
+            excluded_products = algorithm(products_seen_so_far, *params)
+            products_actually_excluded = list(set(products_seen_so_far).intersection(products_to_exclude))
+
+            profit_before_exclusion = calculate_daily_profit(products_in_day)
             excluded_products_profit = calculate_daily_profit(products_actually_excluded)
             profit_after_exclusion = profit_before_exclusion - excluded_products_profit
             total_excluded_products_profit -= excluded_products_profit
 
-            products_in_day_ids = \
-                list(map(lambda p: p[ProductStatistics.PRODUCT_ID], products))
-            products_to_exclude_next_day_ids = \
-                list(map(lambda p: p[ProductStatistics.PRODUCT_ID], excluded_products))
-            products_to_exclude_ids = \
-                list(map(lambda p: p[ProductStatistics.PRODUCT_ID], products_to_exclude))
+            products_in_day_ids = get_entities_attribute(products_in_day, ProductStatistics.PRODUCT_ID)
+            products_to_exclude_next_day_ids = get_entities_attribute(excluded_products, ProductStatistics.PRODUCT_ID)
+            products_to_exclude_ids = get_entities_attribute(products_to_exclude, ProductStatistics.PRODUCT_ID)
             products_actually_excluded_ids = \
-                list(map(lambda p: p[ProductStatistics.PRODUCT_ID], products_actually_excluded))
+                get_entities_attribute(products_actually_excluded, ProductStatistics.PRODUCT_ID)
 
             day_record['day'] = str(day)
-            day_record['products_seen_so_far'] = copy.copy(products_seen_so_far)
+            day_record['products_seen_so_far'] = copy.copy(products_seen_so_far_ids)
             day_record['products_in_day'] = products_in_day_ids
             day_record['products_to_exclude'] = products_to_exclude_ids
             day_record['products_to_exclude_next_day'] = products_to_exclude_next_day_ids
@@ -223,8 +238,6 @@ def generate_excluded_products_result(partner_ids, strategy, algorithm, *params)
             day_record['excluded_products_profit'] = -excluded_products_profit
             day_record['total_excluded_products_profit'] = total_excluded_products_profit
             results.append(day_record)
-
-            products_seen_so_far = sorted(list(set(products_seen_so_far + products_in_day_ids)))
 
         result = {'strategy': strategy, 'days': results}
         out_file_name = str(partner_id) + '_' + strategy + '.json'
