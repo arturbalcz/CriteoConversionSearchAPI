@@ -150,8 +150,13 @@ def calculate_product_day_mean(partner_ids):
                 income = product_day[ProductDay.DAILY_SALES_AMOUNT] * profit_factor
                 cost = product_day[ProductDay.DAILY_CLICKS_NUMBER] * per_partner_cost
                 profit = income - cost
-                mean = (mean + profit) / days_counter
-                std_dev = stdev([mean, profit])
+
+                if days_counter == 1:
+                    mean = profit
+                    std_dev = 0
+                else:
+                    mean = (mean + profit) / 2
+                    std_dev = stdev([mean, profit])
 
                 mean_entity = [product_day[ProductDay.ID], profit, cost, mean, std_dev]
 
@@ -186,6 +191,13 @@ def compare_product_statistics(entity1, entity2):
     return ids[0] < ids[1]
 
 
+def products_intersection(products_list_1, products_list_2):
+    products_list_1_ids = get_entities_attribute(products_list_1, ProductStatistics.PRODUCT_ID)
+    filtered_products = [product for product in products_list_2
+                         if product[ProductStatistics.PRODUCT_ID] in products_list_1_ids]
+    return filtered_products
+
+
 def generate_excluded_products_result(partner_ids, strategy, algorithm, *params):
     for partner_tuple in partner_ids:
         partner_id = partner_tuple[0]
@@ -210,11 +222,8 @@ def generate_excluded_products_result(partner_ids, strategy, algorithm, *params)
                            {'date': day, 'partner_id': partner_id})
             products_seen_so_far = cursor.fetchall()
 
-            if len(products_seen_so_far_ids) != len(set(products_seen_so_far_ids)):
-                print(False)
-
             excluded_products = algorithm(products_seen_so_far, *params)
-            products_actually_excluded = list(set(products_seen_so_far).intersection(products_to_exclude))
+            products_actually_excluded = products_intersection(products_to_exclude, products_in_day)
 
             profit_before_exclusion = calculate_daily_profit(products_in_day)
             excluded_products_profit = calculate_daily_profit(products_actually_excluded)
@@ -264,5 +273,9 @@ if __name__ == '__main__':
     # calculate_partner_data(partners)
 
     # partners = [['04A66CE7327C6E21493DA6F3B9AACC75']]
+    # cursor.execute(ProductDayMean.drop_product_day_table_script)
+    # cursor.execute(ProductDayMean.create_product_day_table_script)
+    #
+    # calculate_product_day_mean(partners)
     generate_excluded_products_result(partners, 'pseudorandom', PseudorandomAlgorithm.exclude_products)
     generate_excluded_products_result(partners, 'ucb_beta_13', UcbAlgorithm.exclude_products, 13)
