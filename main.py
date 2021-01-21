@@ -236,10 +236,6 @@ def generate_excluded_products_result(partner_ids, strategy, algorithm, *params)
             products_actually_excluded_ids = \
                 get_entities_attribute(products_actually_excluded, ProductStatistics.PRODUCT_ID)
 
-            # products_actually_excluded_ids = list(map(lambda p: {"product_id": p[ProductStatistics.PRODUCT_ID],
-            #                                                      "profit": p[ProductStatistics.DAILY_PROFIT]},
-            #                                           products_actually_excluded))
-
             day_record['day'] = str(day)
             day_record['products_seen_so_far'] = copy.copy(products_seen_so_far_ids)
             day_record['products_in_day'] = products_in_day_ids
@@ -267,15 +263,10 @@ if __name__ == '__main__':
     partners = [['C0F515F0A2D0A5D9F854008BA76EB537'], ['04A66CE7327C6E21493DA6F3B9AACC75'],
                 ['C306F0AD20C9B20C69271CC79B2E0887']]
 
-    # db_cleanup()
-    # db_setup()
-    # import_data_from_csv()
-    # calculate_partner_data(partners)
+    db_cleanup()
+    db_setup()
+    import_data_from_csv()
+    calculate_partner_data(partners)
 
-    # partners = [['04A66CE7327C6E21493DA6F3B9AACC75']]
-    # cursor.execute(ProductDayMean.drop_product_day_table_script)
-    # cursor.execute(ProductDayMean.create_product_day_table_script)
-    #
-    # calculate_product_day_mean(partners)
     generate_excluded_products_result(partners, 'pseudorandom', PseudorandomAlgorithm.exclude_products)
     generate_excluded_products_result(partners, 'ucb_beta_13', UcbAlgorithm.exclude_products, 13)
